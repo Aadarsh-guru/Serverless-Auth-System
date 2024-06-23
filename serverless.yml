@@ -1,0 +1,69 @@
+service: serverless-auth-system
+
+plugins:
+  - serverless-dotenv-plugin
+  - serverless-esbuild
+  - serverless-prune-plugin
+  - serverless-offline
+
+package:
+  individually: true
+
+custom:
+  esbuild:
+    bundle: true
+    minify: true
+  prune:
+    automatic: true
+    number: 2
+  serverless-offline:
+    httpPort: 8000
+
+provider:
+  name: aws
+  stage: prod
+  runtime: nodejs20.x
+  region: ap-south-1
+  timeout: 30
+
+functions:
+# Auth functions
+  sendOTPHandler:
+    handler: functions/auth/send-otp.handler
+    events:
+      - http:
+          path: auth/send-otp
+          method: post
+          cors: true
+
+  verifyOTPHandler:
+    handler: functions/auth/verify-otp.handler
+    events:
+      - http:
+          path: auth/verify-otp
+          method: post
+          cors: true
+
+  activateAccountHandler:
+    handler: functions/auth/activate-account.handler
+    events:
+      - http:
+          path: auth/activate-account
+          method: post
+          cors: true
+
+  refreshTokenHandler:
+    handler: functions/auth/refresh-token.handler
+    events:
+      - http:
+          path: auth/refresh-token
+          method: post
+          cors: true
+
+  logoutHandler:
+    handler: functions/auth/logout-user.handler
+    events:
+      - http:
+          path: auth/logout
+          method: post
+          cors: true

@@ -1,0 +1,29 @@
+{
+  "name": "serverless-auth-system",
+  "version": "1.0.0",
+  "description": "This is a backend application for serverless-auth-system",
+  "scripts": {
+    "build": "tsc",
+    "deploy": "serverless deploy",
+    "start": "serverless offline",
+    "remove": "serverless remove"
+  },
+  "keywords": [],
+  "author": "Aadarsh Guru <aadarshgurug@gmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.138",
+    "@types/jsonwebtoken": "^9.0.6",
+    "serverless-dotenv-plugin": "^6.0.0",
+    "serverless-esbuild": "^1.52.1",
+    "serverless-offline": "^13.6.0",
+    "serverless-prune-plugin": "^2.0.2",
+    "typescript": "^5.4.5"
+  },
+  "dependencies": {
+    "@aws-sdk/client-ses": "^3.598.0",
+    "aws-lambda": "^1.0.7",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.4.3"
+  }
+}
